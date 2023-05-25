@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" conteitial-scale=1.0">
-    <title>Shoeless</title>
+    <title>ShoeLess</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <style>
+  .custom-object-fit {
+  object-fit: cover;
+}
+
       body {
       font-family: Arial, sans-serif;
     }
@@ -59,18 +63,27 @@
       border-radius: 0.5rem;
       cursor: pointer;
     }
+
+    #more {display: none;}
+
+    .content {
+    display: none;
+  }
+  
+  .content.show {
+    display: block;
+  }
 </style>
 <body class="bg-secondary">
      <!-- Header -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">ShoeLess</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="#section1">Home</a>
             </li>
@@ -84,7 +97,6 @@
         </div>
       </div>
     </nav>
-  </header>
 
   <!-- Main content -->
     <!-- Section 1 - Home -->
@@ -92,19 +104,19 @@
       <div class="container">
         <div class="row">
           <div class="col-12-md text-center text-white">
-            <h2 class="fw-bold display-3">Comfort, Style, and Quality</h2>
-            <h2 class="fw-bold display-3">- Only at Shoeless.</h2>
+            <h2 class="fw-bold display-3 text-dark">Comfort, Style, and Quality</h2>
+            <h2 class="fw-bold display-3 text-dark">- Only at Shoeless.</h2>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Section 2 - Gallery -->
-    <section id="gallery" class="section mt-5">
-      <div class="container mt-5">
+    <section id="gallery" class="container section mt-5">
+      <div class=" container mt-5">
         <div class="row">
           <div class="col-12-md text-center text-white mt-5">
-            <h2>Shop</h2>
+            <h2 class="display-1">Shop</h2>
           </div>
         </div>
         <div class="row">
@@ -113,10 +125,52 @@
             <div class="card p-2 w-100">
               <img src="b2.jpg" class="card-img-top img-fluid" style="height: 200px; width: 500px;" alt="Shoe 1">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 1</h5>
-                <p class="card-text">Description of shoe 1</p>
-                <p class="card-text">$100</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">Blue Harbor Slip-On Boat Shoe</h5>
+                <p class="card-text">A classic boat shoe designed for casual wear.
+                  <div id="content1" class="content">
+                    <!-- Content for the first Read More button -->
+                    This shoe features a vibrant blue color, a comfortable slip-on style, and a durable sole for enhanced grip on wet surfaces. It's perfect for a relaxed, nautical-inspired look.
+                  </div>
+                  <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content1">Read More</button>
+                 </p>
+                <p class="card-text">&#8369;11,000</p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-whatever="Blue Harbor Slip-On" data-bs-whatever1="&#8369;11,000">Add to Cart</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal1Label">Checked out Item:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="checkout-form">
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Item</label>
+                            <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                            <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                          </div>
+                          <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                            required placeholder="Full Name">
+                            <label for="address" class="col-form-label">Address:</label>
+                            <input type="text" class="form-control" name="address" id="address"
+                            required placeholder="Address">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="tel" class="form-control" name="phone" id="phone"
+                            required placeholder="Phone Number">
+                          </div>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Modal -->
               </div>
             </div>
           </div>
@@ -125,10 +179,49 @@
             <div class="card p-2 w-100">
               <img src="b3.jpg" class="card-img-top img-fluid" style="height: 200px; width: 500px;" alt="Shoe 2">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 2</h5>
-                <p class="card-text">Description of shoe 2</p>
-                <p class="card-text">$80</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">Sunny Twist Lace Sneaker</h5>
+                <p class="card-text">Make a statement with these vibrant yellow sneakers. <div id="content2" class="content">
+                  <!-- Content for the first Read More button -->
+                  They feature unique knot laces that add a playful twist to the design. These shoes are not only stylish but also comfortable, providing a perfect blend of fashion and functionality.
+                </div>
+                <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content2">Read More</button>
+                <p class="card-text">&#8369;3,500</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal2" data-bs-whatever="Sunny Twist Lace Sneaker" data-bs-whatever1="&#8369;3,500">Add to Cart</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal2Label">Checked out Item:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="checkout-form">
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Item</label>
+                            <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                            <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                          </div>
+                          <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                            required placeholder="Full Name">
+                            <label for="address" class="col-form-label">Address:</label>
+                            <input type="text" class="form-control" name="address" id="address"
+                            required placeholder="Address">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="tel" class="form-control" name="phone" id="phone"
+                            required placeholder="Phone Number">
+                          </div>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Modal -->
               </div>
             </div>
           </div>
@@ -137,10 +230,52 @@
             <div class="card p-2 w-100">
               <img src="b4.jpg" class="card-img-top img-fluid" style=" height: 200px; width: 500px;" alt="Shoe 3">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 3</h5>
-                <p class="card-text">Description of shoe 3</p>
-                <p class="card-text">$120</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">Air Max Elite Red Court</h5>
+                <p class="card-text">
+                  The Nike Air Max Elite Red Court basketball shoes are built for high-performance on the court. 
+                  <div id="content3" class="content">
+                    <!-- Content for the first Read More button -->
+                    They feature unique knot laces that add a playful twist to the design. These shoes are not only stylish but also comfortable, providing a perfect blend of fashion and functionality.
+                  </div>
+                </p>
+                <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content3">Read More</button>
+                <p class="card-text">&#8369;9,000</p>
+               <!-- Button trigger modal -->
+               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal3" data-bs-whatever="AirMax Elite Red Court" data-bs-whatever1="&#8369;9,000">Add to Cart</button>
+               <!-- Modal -->
+               <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="modal3Label">Checked out Item:</h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                       <form id="checkout-form">
+                         <div class="mb-3">
+                           <label for="recipient-name" class="col-form-label">Item</label>
+                           <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                           <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                         </div>
+                         <div class="mb-3">
+                           <label for="name" class="col-form-label">Name:</label>
+                           <input type="text" class="form-control" name="name" id="name"
+                           required placeholder="Full Name">
+                           <label for="address" class="col-form-label">Address:</label>
+                           <input type="text" class="form-control" name="address" id="address"
+                           required placeholder="Address">
+                           <label for="phone" class="col-form-label">Phone:</label>
+                           <input type="tel" class="form-control" name="phone" id="phone"
+                           required placeholder="Phone Number">
+                         </div>
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                         <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <!-- End of Modal -->
               </div>
             </div>
           </div>
@@ -149,10 +284,52 @@
             <div class="card p-2 w-100">
               <img src="b5.webp" class="card-img-top img-fluid" style=" height: 200px; width: 500px;" alt="Shoe 1">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 1</h5>
-                <p class="card-text">Description of shoe 1</p>
-                <p class="card-text">$100</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">LunarGlide Neutral Runner</h5>
+                <p class="card-text">
+                  The LunarGlide Neutral Runner shoes by Nike combine style and comfort. 
+                  <div id="content4" class="content">
+                    <!-- Content for the first Read More button -->
+                    With a sleek grey and white color scheme, these shoes offer a lightweight and breathable design, ideal for runners. The Lunarlon cushioning technology provides responsive support, making them a great choice for both casual runs and intense workouts.
+                  </div>
+                </p>
+                <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content4">Read More</button>
+                <p class="card-text">&#8369;10,500</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal4" data-bs-whatever="LunarGlide Neutral Runner" data-bs-whatever1="&#8369;10,500">Add to Cart</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="modal4Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal4Label">Checked out Item:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="checkout-form">
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Item</label>
+                            <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                            <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                          </div>
+                          <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                            required placeholder="Full Name">
+                            <label for="address" class="col-form-label">Address:</label>
+                            <input type="text" class="form-control" name="address" id="address"
+                            required placeholder="Address">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="tel" class="form-control" name="phone" id="phone"
+                            required placeholder="Phone Number">
+                          </div>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Modal -->
               </div>
             </div>
           </div>
@@ -161,10 +338,52 @@
             <div class="card p-2 w-100">
               <img src="b7.jpg" class="card-img-top img-fluid" style=" height: 200px; width: 500px;" alt="Shoe 2">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 2</h5>
-                <p class="card-text">Description of shoe 2</p>
-                <p class="card-text">$80</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">Classic Fusion Sneakers</h5>
+                <p class="card-text">
+                  Step up your street style with these white sneakers featuring the iconic Nike logo. 
+                  <div id="content5" class="content">
+                    <!-- Content for the first Read More button -->
+                    The combination of white and yellow accents creates a fresh and vibrant look. These shoes offer a comfortable fit, excellent traction, and a versatile design that can be paired with various outfits.
+                  </div>
+                </p>
+                <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content5">Read More</button>
+                <p class="card-text">&#8369;7,500</p>
+               <!-- Button trigger modal -->
+               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal5" data-bs-whatever="Classic Fusion Sneakers" data-bs-whatever1="&#8369;7,500">Add to Cart</button>
+               <!-- Modal -->
+               <div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="modal5Label" aria-hidden="true">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="modal5Label">Checked out Item:</h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                       <form id="checkout-form">
+                         <div class="mb-3">
+                           <label for="recipient-name" class="col-form-label">Item</label>
+                           <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                           <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                         </div>
+                         <div class="mb-3">
+                           <label for="name" class="col-form-label">Name:</label>
+                           <input type="text" class="form-control" name="name" id="name"
+                           required placeholder="Full Name">
+                           <label for="address" class="col-form-label">Address:</label>
+                           <input type="text" class="form-control" name="address" id="address"
+                           required placeholder="Address">
+                           <label for="phone" class="col-form-label">Phone:</label>
+                           <input type="tel" class="form-control" name="phone" id="phone"
+                           required placeholder="Phone Number">
+                         </div>
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                         <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <!-- End of Modal -->
               </div>
             </div>
           </div>
@@ -173,14 +392,55 @@
             <div class="card p-2 w-100">
               <img src="b8.webp" class="card-img-top img-fluid" style=" height: 200px; width: 500px;" alt="Shoe 3">
               <div class="card-body bg-info">
-                <h5 class="card-title">Shoe 3</h5>
-                <p class="card-text">Description of shoe 3</p>
-                <p class="card-text">$120</p>
-                <button class="btn btn-warning p2">Add to cart</button>
+                <h5 class="card-title">Authentic Checkerboard Pro</h5>
+                <p class="card-text">
+                  The Authentic Checkerboard Pro shoes from Vans are a stylish choice.
+                  <div id="content6" class="content">
+                    <!-- Content for the first Read More button -->
+                    These shoes feature long laces that can be tied in various ways for a customized look. With a durable construction and a grippy sole, they offer both comfort and durability for skateboarding or everyday wear.
+                  </div>
+                </p>
+                <button class="read-more-btn border-radius rounded-2 mb-2 btn-blue" data-target="content6">Read More</button>
+                <p class="card-text">&#8369;6,000</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal6" data-bs-whatever="Authentic Checkerboard Pro" data-bs-whatever1="&#8369;6,000">Add to Cart</button>
+                <!-- Modal -->
+                <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="modal6Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal6Label">Checked out Item:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="checkout-form">
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Item</label>
+                            <input type="text" name="item1" class="form-control" id="recipient-name" readonly>
+                            <input type="text" name="price1" class="form-control" id="recipient-name" readonly>
+                          </div>
+                          <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                            required placeholder="Full Name">
+                            <label for="address" class="col-form-label">Address:</label>
+                            <input type="text" class="form-control" name="address" id="address"
+                            required placeholder="Address">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="tel" class="form-control" name="phone" id="phone"
+                            required placeholder="Phone Number">
+                          </div>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary checkout-button">Checkout</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Modal -->
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -195,49 +455,94 @@
         </div>
 
         <div class="row">
-
           <div class="col-12-md">
             <div id="customerReviewsCarousel" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="card">
-                    <div class="card-body bg-info">
-                      <p class="card-text">"These shoes are amazing! They're so comfortable and stylish at the same time."</p>
-                      <p class="card-text">- John Smith</p>
+                  <div class="card mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://loremflickr.com/320/240/human" class="card-img-top img-fluid custom-object-fit rounded-start" alt="Person Image">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">From John smith</h5>
+                          <p class="card-text">"These shoes are amazing! They're so comfortable and stylish at the same time."</</p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <div class="card">
-                    <div class="card-body bg-info">
-                      <p class="card-text">"I love ShoeLess! They have the best collection of shoes and their customer service is top-notch."</p>
-                      <p class="card-text">- Jane Doe</p>
+              
+                    <div class="card mx-auto" style="max-width: 540px;">
+                      <div class="row g-0">
+                        <div class="col-md-4">
+                          <img src="https://loremflickr.com/320/240/person" class="card-img-top img-fluid custom-object-fit rounded-start" alt="Person Image">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">From Jane Doe</h5>
+                            <p class="card-text">"I love ShoeLess! They have the best collection of shoes and their customer service is top-notch."</</p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 29 mins ago</small></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+               
+                </div>
+                <div class="carousel-item">
+                  <div class="card mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://loremflickr.com/320/240/person2" class="card-img-top img-fluid custom-object-fit rounded-start" alt="Person Image">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">From Bob Johnson</h5>
+                          <p class="card-text">"I was hesitant to buy shoes online, but ShoeLess made the process so easy and the shoes are perfect!"</p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 5 hrs ago</small></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <div class="card">
-                    <div class="card-body bg-info">
-                      <p class="card-text">"I was hesitant to buy shoes online, but ShoeLess made the process so easy and the shoes are perfect!"</p>
-                      <p class="card-text">- Bob Johnson</p>
+          
+                  <div class="card mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://loremflickr.com/320/240/humangit" class="card-img-top img-fluid custom-object-fit rounded-start" alt="Person Image">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">From Sarah Lee</h5>
+                          <p class="card-text">"I recommend ShoeLess to all my friends and family. You won't regret buying from them."</p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 17 hrs ago</small></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  
                 </div>
                 <div class="carousel-item">
-                  <div class="card">
-                    <div class="card-body bg-info">
-                      <p class="card-text">"I recommend ShoeLess to all my friends and family. You won't regret buying from them."</p>
-                      <p class="card-text">- Sarah Lee</p>
+                  
+                  <div class="card mx-auto" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="https://loremflickr.com/320/240/person4" class="card-img-top img-fluid custom-object-fit rounded-start" alt="Person Image">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">From David Brown</h5>
+                          <p class="card-text">"The shoes from ShoeLess are of great quality and the prices are unbeatable. I'm a happy customer!"</p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 23 hrs ago</small></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="card">
-                    <div class="card-body bg-info">
-                      <p class="card-text">"The shoes from ShoeLess are of great quality and the prices are unbeatable. I'm a happy customer!"</p>
-                      <p class="card-text">- David Brown</p>
-                    </div>
-                  </div>
+
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#customerReviewsCarousel" data-bs-slide="prev">
@@ -253,12 +558,12 @@
         </div>
         <div class="row">
             <div class="col-12-md text-center mt-5">
-              <h2>Contact Us</h2>
+              <h2 id="contact">Contact Us</h2>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 mx-auto">
-              <form id="contactForm" method="POST">
+              <form id="contactForm">
                 <div class="mb-3">
                   <input type="text" class="form-control" name="name" placeholder="Name" required>
                 </div>
@@ -292,7 +597,6 @@
           <h5>About Us</h5>
           <p>Email: info@shoeless.com</p>
           <p>Phone: +1-555-555-5555</p>
-          <p>Another punchline for visiting the page</p>
         </div>
         <div class="col-md-4 mb-5 bg">
           <p>&copy; 2023 ShoeLess. All rights reserved.</p>
@@ -302,24 +606,7 @@
   </footer>
 
   <!-- Bootstrap JavaScript libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
-  
-  <!-- JavaScript code for form submission and window alert -->
-  <script>
-    $('#contactForm').submit(function(e) {
-      e.preventDefault();
-      // Show the success message
-      alert('Thanks for your inquiry!');
-    });
-  </script>
-  </body>
-  </html>
-  
-    
-
-
+  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>
